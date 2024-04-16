@@ -1,4 +1,4 @@
-package com.example.noteapp.local
+package com.example.noteapp.data.local
 
 import android.content.Context
 import com.example.noteapp.database.NoteDatabase
