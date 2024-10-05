@@ -25,11 +25,11 @@ class NoteListViewModel @Inject constructor(
     private val isSearchActive = savedStateHandle.getStateFlow("isSearchActive", false)
 
     val state = combine(notes, searchText, isSearchActive) {
-        notes, searchText, isSeachActive ->
+        notes, searchText, isSearchActive ->
         NoteListState(
             notes = searchNotes.execute(notes, searchText),
             searchText = searchText,
-            isSearchActive = isSeachActive
+            isSearchActive = isSearchActive
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), NoteListState())
 
@@ -53,7 +53,7 @@ class NoteListViewModel @Inject constructor(
     fun  deleteNoteById(id: Long){
         viewModelScope.launch {
             noteDataSource.deleteNoteById(id)
-            loadNotes()
+             loadNotes()
         }
     }
 }
